@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -20,11 +21,9 @@ namespace ShopBack_Selenium_Project.Test_Script
         {
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            driver.Navigate().GoToUrl("https://www.amazon.com/");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
         }
-
-        
 
        
         [OneTimeTearDown]

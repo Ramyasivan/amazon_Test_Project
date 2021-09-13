@@ -18,19 +18,22 @@ namespace ShopBack_Selenium_Project.Test_Script.Test_Script
         [Test]
         public void Login()
         {
+            //Retrieve username and password
             var userData = ExcelDataAccess.GetTestData("Login");
 
+            //Click on Account List
             accountList.Click();
+
+            //Input user name and continue
             userName.SendKeys(userData.Username);
             continueBtn.Click();
+
+            //Input password
             password.SendKeys(userData.Password);
             submit.Click();
 
-            if (!userSignIn.Text.Contains("Sign in"))
-            {
-                Assert.Pass("Sign in Successful");
-            }
-            else
+            //Verify login is successful
+            if (userSignIn.Text.Contains("Sign in"))
                 Assert.Fail("Sign in Unsuccessful");
         }
     }
