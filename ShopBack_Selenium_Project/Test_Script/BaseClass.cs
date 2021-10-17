@@ -19,7 +19,9 @@ namespace ShopBack_Selenium_Project.Test_Script
         [OneTimeSetUp]
         public void InitBrowser()
         {
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("headless");
+            driver = new ChromeDriver(options);
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
